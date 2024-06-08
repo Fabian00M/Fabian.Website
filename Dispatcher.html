@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabian Martinez</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+  <!--Header-->
+  <div class="container">
+    <header class="border-bottom lh-1 py-3">
+        <div class="col-4 d-flex">
+          <a href="./index.html">
+            <button type="button" class="btn btn-outline-primary">Back</button>
+          </a>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!--Start-->
+  <div class="px-4 pt-3 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-body-emphasis">Process Dispatcher</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">This program is a basic implementation of a process 
+        dispatcher for managing multiple processes in a multitasking environment.
+        It demonstrates process scheduling, resource management, and signal handling functionalities.
+      </p>
+    </div>
+    <div class="overflow-hidden" style="max-height: 50vh;">
+      <div class="container px-5">
+          <img src="images/Dispatcher.jpeg" height="250px" width="550px">
+      </div>
+    </div>
+  </div>
+
+  <!--about-->
+  <div class="container px-5">
+  <div class="col-md-8">
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+      Designing the shell
+    </h3>
+
+    <article class="blog-post">
+      <p>Designing this program gave me several valuable lessons in various aspects of 
+        operating systems, process management, and resource allocation. Here are some key takeaways:</p>
+      <dl>
+
+        <dt>Understanding Process Management:</dt>
+        <dd>Learned how to create and manage PCBs, which are essential for tracking process information 
+          such as PID, arguments, arrival time, remaining CPU time, priority, and resource needs.</dd>
+        <dd>Applying how to manage the entire lifecycle of a process, including starting, suspending, 
+          continuing, and terminating processes..</dd>
+
+        <dt>Resource Allocation and Management:</dt>
+        <dd>Gained experience on how to check for resource availability and allocate/deallocate resources.</dd>
+
+        <dt>Priority Scheduling and Feedback Queues:</dt>
+        <dd>Used the implementation of a priority-based scheduling algorithm using multiple feedback queues.</dd>
+        <dd>Manage and manipulate processes within feedback queues to ensure that higher-priority processes 
+          get more CPU time and lower-priority processes get demoted if they consume too much CPU time.</dd>
+
+        <dt>Interprocess Communication and Signals:</dt>
+        <dd>Used UNIX signals (SIGINT, SIGTSTP, SIGCONT) to control process states (start, suspend, continue, terminate).</dd>
+        <dd>Create new processes using forks.</dd>
+
+        <dt>Concurrency and Synchronization:</dt>
+        <dd>Managing multiple processes concurrently and understanding how to synchronize their execution using scheduling algorithms.</dd>
+      </dl>
+      <hr>
+      
+  </div>
+  </div>
+
+  <!--code-->
+  <div class="bg-dark text-secondary px-4 py-2 text-left">
+    <div class="py-2">
+      <h1 class="display-2 fw-bold text-white">Code:</h1>
+      <div class="row-lg-6 mx-auto">
+    <p class="fs-5 mb-4">
+        <pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;unistd.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include "memory.h"
+
+#define MAXARGS 10
+
+using namespace std;
+
+// Define the structure for process control blocks (PCBs)
+struct pcb {
+    pid_t pid; // Process ID
+    char *args[MAXARGS]; // Arguments for the process
+    int arrivaltime; // Arrival time of the process
+    int remainingcputime; // Remaining CPU time needed for the process
+    int priority; // Priority of the process
+    struct pcb *next; // Pointer to the next PCB in the queue
+    bool started; // Flag to indicate if the process has started
+    int memory_needed; // Memory needed by the process
+    MabPtr memory_block; // Pointer to the allocated memory block
+    int printers; // Number of printers required
+    int scanners; // Number of scanners required
+    int modems; // Number of modems required
+    int cds; // Number of CD drives required
+};
+
+typedef struct pcb Pcb;
+typedef Pcb* PcbPtr;
+
+const int NUM_FEEDBACK_QUEUES = 4;
+queue&lt;PcbPtr&gt; input_queue, user_job_queue; // Queues for input and user jobs
+queue&lt;PcbPtr&gt; feedback_queues[NUM_FEEDBACK_QUEUES]; // Feedback queues
+PcbPtr current_process = NULL; // Pointer to the currently running process
+
+// Available resources
+int available_printers = 2;
+int available_scanners = 1;
+int available_modems = 1;
+int available_cds = 2;
+
+// This function starts a process by forking a new child process. 
+// The child process then uses execvp to replace its image with the process image specified in the PCB.
+void startPcb(PcbPtr process) {
+    process->pid = fork();
+    if (process->pid == 0) { // Child process
+        execvp(process->args[0], process->args);
+        exit(1); // Exit if execvp fails
+    } else if (process->pid &lt; 0) { // Fork failed
+        cerr &lt;&lt; "Fork failed" &lt;&lt; endl;
+        exit(1);
+    }
+    process->started = true;
+    cout &lt;&lt; "Process " &lt;&lt; process->pid &lt;&lt; " started with priority " &lt;&lt; process->priority &lt;&lt; " and remaining CPU time " &lt;&lt; process->remainingcputime &lt;&lt; endl;
+}
+
+// This function terminates a process by sending it a SIGINT signal.
+// It also deallocates the memory assigned to the process and deletes the PCB.
+void terminatePcb(PcbPtr process) {
+    if (kill(process->pid, SIGINT)) { // Send SIGINT signal to terminate the process
+        cerr &lt;&lt; "Terminate of process " &lt;&lt; process->pid &lt;&lt; " failed" &lt;&lt; endl;
+    }
+    memDealloc(process->memory_block); // Free memory when process is terminated
+    cout &lt;&lt; "Process " &lt;&lt; process->pid &lt;&lt; " terminated and memory deallocated" &lt;&lt; endl;
+    delete process; // Free PCB
+}
+
+// This function suspends a process by sending it a SIGTSTP signal.
+// The process can later be continued using continuePcb.
+void suspendPcb(PcbPtr process) {
+    if (kill(process->pid, SIGTSTP)) { // Send SIGTSTP signal to suspend the process
+        cerr &lt;&lt; "Suspend of process " &lt;&lt; process->pid &lt;&lt; " failed" &lt;&lt; endl;
+    }
+    cout &lt;&lt; "Process " &lt;&lt; process->pid &lt;&lt; " suspended" &lt;&lt; endl;
+}
+
+// This function continues a suspended process by sending it a SIGCONT signal.
+// It resumes the execution of a process that was previously stopped by a SIGTSTP signal.
+void continuePcb(PcbPtr process) {
+    if (kill(process->pid, SIGCONT)) { // Send SIGCONT signal to continue the process
+        cerr &lt;&lt; "Continue of process " &lt;&lt; process->pid &lt;&lt; " failed" &lt;&lt; endl;
+    }
+    cout &lt;&lt; "Process " &lt;&lt; process->pid &lt;&lt; " continued" &lt;&lt; endl;
+}
+
+// This function enqueues a process into the appropriate feedback queue based on its priority.
+void enqueuePcb(PcbPtr process) {
+    int priority = process->priority; // Get the priority of the process
+    feedback_queues[priority].push(process); // Push the process to the appropriate feedback queue
+    cout &lt;&lt; "Process " &lt;&lt; process->pid &lt;&lt; " enqueued in priority " &lt;&lt; priority &lt;&lt; endl;
+}
+
+// This function dequeues a process from the feedback queues, starting from the highest priority (0).
+// It returns the dequeued process or NULL if all queues are empty.
+PcbPtr dequeuePcb() {
+    for (int i = 0; i &lt; NUM_FEEDBACK_QUEUES; ++i) { // Iterate over feedback queues
+        if (!feedback_queues[i].empty()) { // Check if the queue is not empty
+            PcbPtr process = feedback_queues[i].front(); // Get the front process
+            feedback_queues[i].pop(); // Remove the process from the queue
+            cout &lt;&lt; "Process " &lt;&lt; process->pid &lt;&lt; " dequeued from priority " &lt;&lt; i &lt;&lt; endl;
+            return process; // Return the dequeued process
+        }
+    }
+    return NULL; // Return NULL if all queues are empty
+}
+
+// This function checks if there are enough resources (printers, scanners, modems, CDs) available for a process.
+bool resourcesAvailable(PcbPtr process) {
+    return (available_printers &gt;= process->printers &&
+            available_scanners &gt;= process->scanners &&
+            available_modems &gt;= process->modems &&
+            available_cds &gt;= process->cds);
+}
+
+// This function allocates resources (printers, scanners, modems, CDs) to a process.
+void allocateResources(PcbPtr process) {
+    available_printers -= process->printers;
+    available_scanners -= process->scanners;
+    available_modems -= process->modems;
+    available_cds -= process->cds;
+}
+
+// This function deallocates resources (printers, scanners, modems, CDs) from a process.
+void deallocateResources(PcbPtr process) {
+    available_printers += process->printers;
+    available_scanners += process->scanners;
+    available_modems += process->modems;
+    available_cds += process->cds;
+}
+
+// This function fills the input queue with processes from a dispatch list file.
+// Each line in the file represents a process and is parsed to create a PCB.
+void fillInputQueue(char* filename) {
+    ifstream file(filename); // Open the file
+    if (!file) { // Check if file opening failed
+        cerr &lt;&lt; "Error opening file: " &lt;&lt; filename &lt;&lt; endl;
+        exit(1); // Exit with error
+    }
+    string line;
+    while (getline(file, line)) { // Read lines from the file
+        stringstream ss(line);
+        string token;
+        PcbPtr process = new Pcb(); // Create a new PCB
+        int i = 0;
+        while (getline(ss, token, ',')) { // Tokenize the line by commas
+            switch (i) {
+                case 0: process->arrivaltime = stoi(token); break; // Set the arrival time
+                case 1: process->priority = stoi(token); break; // Set the priority
+                case 2: process->remainingcputime = stoi(token); break; // Set the remaining CPU time
+                case 3: process->memory_needed = stoi(token); break; // Set the memory needed
+                case 4: process->printers // Set the printers needed
+                // Add similar cases for other resource requirements like scanners, modems, and CDs
+                default: cerr &lt;&lt; "Unknown token: " &lt;&lt; token &lt;&lt; endl;
+            }
+            i++;
+        }
+        input_queue.push(process); // Push the process to the input queue
+    }
+    file.close(); // Close the file
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        cerr &lt;&lt; "Usage: " &lt;&lt; argv[0] &lt;&lt; " &lt;dispatchlist&gt;" &lt;&lt; endl;
+        return 1;
+    }
+    fillInputQueue(argv[1]); // Fill the input queue with processes from the dispatch list
+
+    // Main simulation loop
+    int current_time = 0;
+    while (!input_queue.empty() || !user_job_queue.empty() || current_process != NULL) {
+        // Check for newly arrived processes and move them to the user job queue
+        while (!input_queue.empty() && input_queue.front()->arrivaltime &lt;= current_time) {
+            user_job_queue.push(input_queue.front());
+            input_queue.pop();
+        }
+
+        // Schedule the next process if there is no current process
+        if (current_process == NULL && !user_job_queue.empty()) {
+            current_process = user_job_queue.front();
+            user_job_queue.pop();
+
+            // Allocate resources and start the process
+            if (resourcesAvailable(current_process)) {
+                allocateResources(current_process);
+                startPcb(current_process);
+            } else {
+                // If resources are not available, put the process back to the user job queue
+                user_job_queue.push(current_process);
+                current_process = NULL;
+            }
+        }
+
+        // If there is a current process, decrement its remaining CPU time
+        if (current_process != NULL) {
+            current_process->remainingcputime--;
+            if (current_process->remainingcputime == 0) {
+                // Terminate the process if it has finished
+                terminatePcb(current_process);
+                deallocateResources(current_process);
+                current_process = NULL;
+            }
+        }
+
+        // Check for suspended processes and continue them
+        // You may need to implement additional logic here based on your requirements
+
+        // Increment the current time
+        current_time++;
+    }
+
+    return 0;
+}
+        </code></pre>
+    </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+<div class="gradient-background" >
+  <div class="container">
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-4 border-top">
+      <div class="col ">
+        <p class="text-body-secondary">© 2024</p>
+      </div>  
+      <div class="col ">
+        </div>
+        <div class="col ">
+          <p>Mobile Phone:</p>
+          <p>(417)726-2765</p>
+        </div>
+        <div class="col ">
+          <a class="footer-link" href="www.linkedin.com/in/fabian-martinez-camargo-32357427b">LinkedIn</a>
+      </div>
+  
+      <div class="col ">
+        <p>WhatsApp: </p>
+        <p>+57 (319)206-4090</p>
+      </div>
+    </footer>
+  </div>
+   
+  <p class="copyright">© Fabian Martinez</p>
+
+</div>
+
+<!--DNT-->
+</body>
+
+</html>
