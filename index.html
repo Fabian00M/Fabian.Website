@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabian Martinez | Portfolio</title>
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
@@ -96,9 +96,6 @@
     /* Certificates */
     .certificate-card { border-left: 5px solid #0d6efd; }
 
-    /* Skills badges */
-    .badge-skill { margin: 2px 2px; font-size: 0.85rem; }
-
     footer {
       background: #004aad;
       color: white;
@@ -112,9 +109,9 @@
 <body>
 
   <!-- ===== HERO SECTION ===== -->
-  <section id="title" class="gradient-background text-center text-lg-start">
+  <section id="title" class="gradient-background text-center text-lg-start reveal">
     <div class="container py-5">
-      <div class="row align-items-center g-5 reveal">
+      <div class="row align-items-center g-5">
         <div class="col-lg-6 text-center text-lg-start">
           <h1 class="display-5 fw-bold lh-1 mb-3">Fabian Martinez</h1>
           <h2 class="fw-light">Software Engineer & Web Developer</h2>
@@ -189,7 +186,7 @@
     <div class="container">
       <h2 class="section-header text-center mb-5">Experience</h2>
       <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
-
+        <!-- IT & System Administrator -->
         <div class="col">
           <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
@@ -204,6 +201,7 @@
           </div>
         </div>
 
+        <!-- Full Stack Web Developer -->
         <div class="col">
           <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
@@ -217,6 +215,7 @@
           </div>
         </div>
 
+        <!-- Mobile App Developer -->
         <div class="col">
           <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
@@ -231,6 +230,7 @@
           </div>
         </div>
 
+        <!-- Backend/API Developer -->
         <div class="col">
           <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
@@ -244,6 +244,7 @@
           </div>
         </div>
 
+        <!-- Software Engineer -->
         <div class="col">
           <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
@@ -266,162 +267,47 @@
     <div class="container">
       <h2 class="section-header text-center mb-5">Certificates</h2>
       <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
-
-        <div class="col">
-          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Ethical Hacking from Scratch</h5>
-              <p class="text-muted">Udemy</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Beginning C++ Programming – From Beginner to Beyond</h5>
-              <p class="text-muted">Udemy</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Python for Data Science and Machine Learning Bootcamp</h5>
-              <p class="text-muted">Udemy</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">The Complete Python Bootcamp</h5>
-              <p class="text-muted">Udemy</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">The Complete 2024 Web Development Bootcamp</h5>
-              <p class="text-muted">Udemy</p>
-            </div>
-          </div>
-        </div>
-
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover certificate-card"><div class="card-body"><h5 class="card-title fw-bold">Ethical Hacking from Scratch</h5><p class="text-muted">Udemy</p></div></div></div>
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover certificate-card"><div class="card-body"><h5 class="card-title fw-bold">Beginning C++ Programming – From Beginner to Beyond</h5><p class="text-muted">Udemy</p></div></div></div>
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover certificate-card"><div class="card-body"><h5 class="card-title fw-bold">Python for Data Science and Machine Learning Bootcamp</h5><p class="text-muted">Udemy</p></div></div></div>
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover certificate-card"><div class="card-body"><h5 class="card-title fw-bold">The Complete Python Bootcamp</h5><p class="text-muted">Udemy</p></div></div></div>
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover certificate-card"><div class="card-body"><h5 class="card-title fw-bold">The Complete 2024 Web Development Bootcamp</h5><p class="text-muted">Udemy</p></div></div></div>
       </div>
     </div>
   </section>
 
   <!-- ===== PROJECTS SECTION ===== -->
-<section id="projects" class="reveal">
-  <div class="container">
-    <h2 class="section-header text-center mb-5">Projects</h2>
-    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+  <section id="projects" class="reveal">
+    <div class="container">
+      <h2 class="section-header text-center mb-5">Projects</h2>
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <!-- Android Mobile App -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/TiTenis/login1.jpeg" class="card-img-top" alt="Android Mobile App"><div class="card-body d-flex flex-column"><h5 class="card-title">Android Mobile App</h5><p class="card-text flex-grow-1">Built with Java, PHP, and MySQL using Android Studio and Workbench. Features user login and database integration.</p><a href="./App.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
 
-      <!-- Android Mobile App -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/TiTenis/login1.jpeg" class="card-img-top" alt="Android Mobile App">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Android Mobile App</h5>
-            <p class="card-text flex-grow-1">Built with Java, PHP, and MySQL using Android Studio and Workbench. Features user login and database integration.</p>
-            <a href="./App.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
+        <!-- WebPage Design -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/WebPage.jpeg" class="card-img-top" alt="Web Design"><div class="card-body d-flex flex-column"><h5 class="card-title">WebPage Design</h5><p class="card-text flex-grow-1">Developed using HTML, CSS, and Bootstrap. Responsive and optimized for different devices.</p><a href="./Webpage.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
+        <!-- Process Dispatcher -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/Dispatcher.jpeg" class="card-img-top" alt="Dispatcher Project"><div class="card-body d-flex flex-column"><h5 class="card-title">Process Dispatcher</h5><p class="card-text flex-grow-1">Created a Unix-based process dispatcher to manage multiple tasks in a multitasking environment.</p><a href="./Dispatcher.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
+        <!-- LightCycles Game -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/Tron.jpeg" class="card-img-top" alt="Tron Game"><div class="card-body d-flex flex-column"><h5 class="card-title">LightCycles Game</h5><p class="card-text flex-grow-1">A Tron-inspired game developed in C++ with a custom-built game engine.</p><a href="./Tron.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
+        <!-- Robert 2D Game -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/Robert.jpeg" class="card-img-top" alt="Robert Game"><div class="card-body d-flex flex-column"><h5 class="card-title">Robert 2D Game</h5><p class="card-text flex-grow-1">Designed a 2D version of Qbert in C++, featuring custom physics and level design.</p><a href="./Robert.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
+        <!-- Brick Breaker Game -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/Brick.jpeg" class="card-img-top" alt="Brick Game"><div class="card-body d-flex flex-column"><h5 class="card-title">Brick Breaker Game</h5><p class="card-text flex-grow-1">A fun classic-style game created in C++, including custom collision logic.</p><a href="./Brick.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
+        <!-- Brainiac Memory Game -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/match.jpeg" class="card-img-top" alt="Brainiac Game"><div class="card-body d-flex flex-column"><h5 class="card-title">Brainiac Memory Game</h5><p class="card-text flex-grow-1">Designed a C++ memory matching game using object-oriented design principles.</p><a href="./Brainiac.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
+        <!-- Nim Disk Game -->
+        <div class="col"><div class="card shadow-sm h-100 border-0 card-hover"><img src="images/disk.jpeg" class="card-img-top" alt="Nim Game"><div class="card-body d-flex flex-column"><h5 class="card-title">Nim Disk Game</h5><p class="card-text flex-grow-1">Created a C++ disk-removal strategy game with multiplayer support.</p><a href="./Disk.html" class="btn btn-outline-primary mt-auto">View Details</a></div></div></div>
+
       </div>
-
-      <!-- WebPage Design -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/WebPage.jpeg" class="card-img-top" alt="Web Design">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">WebPage Design</h5>
-            <p class="card-text flex-grow-1">Developed using HTML, CSS, and Bootstrap. Responsive and optimized for different devices.</p>
-            <a href="./Webpage.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Process Dispatcher -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/Dispatcher.jpeg" class="card-img-top" alt="Dispatcher Project">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Process Dispatcher</h5>
-            <p class="card-text flex-grow-1">Created a Unix-based process dispatcher to manage multiple tasks in a multitasking environment.</p>
-            <a href="./Dispatcher.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- LightCycles Game -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/Tron.jpeg" class="card-img-top" alt="Tron Game">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">LightCycles Game</h5>
-            <p class="card-text flex-grow-1">A Tron-inspired game developed in C++ with a custom-built game engine.</p>
-            <a href="./Tron.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Robert 2D Game -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/Robert.jpeg" class="card-img-top" alt="Robert Game">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Robert 2D Game</h5>
-            <p class="card-text flex-grow-1">Designed a 2D version of Qbert in C++, featuring custom physics and level design.</p>
-            <a href="./Robert.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Brick Breaker Game -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/Brick.jpeg" class="card-img-top" alt="Brick Game">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Brick Breaker Game</h5>
-            <p class="card-text flex-grow-1">A fun classic-style game created in C++, including custom collision logic.</p>
-            <a href="./Brick.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Brainiac Memory Game -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/match.jpeg" class="card-img-top" alt="Brainiac Game">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Brainiac Memory Game</h5>
-            <p class="card-text flex-grow-1">Designed a C++ memory matching game using object-oriented design principles.</p>
-            <a href="./Brainiac.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nim Disk Game -->
-      <div class="col">
-        <div class="card shadow-sm h-100 border-0 card-hover">
-          <img src="images/disk.jpeg" class="card-img-top" alt="Nim Game">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Nim Disk Game</h5>
-            <p class="card-text flex-grow-1">Created a C++ disk-removal strategy game with multiplayer support.</p>
-            <a href="./Disk.html" class="btn btn-outline-primary mt-auto">View Details</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- ===== SKILLS SECTION ===== -->
   <section id="skills" class="bg-light reveal">
@@ -445,7 +331,7 @@
     <div class="container">
       <h2 class="section-header mb-3">Contact Me</h2>
       <p class="lead mb-4">Ready to join your team and contribute to your next project!</p>
-      <a href="mailto:fabianmartinezcamargo81@gmail.com" class="btn btn-primary btn-lg">E-Mail</a>
+      <a href="mailto:fabianyadid@yahoo.es" class="btn btn-primary btn-lg">E-Mail</a>
     </div>
   </section>
 
@@ -453,7 +339,7 @@
   <footer class="py-4 text-center">
     <div class="container">
       <p class="mb-1">© 2025 Fabian Martinez</p>
-      <p class="mb-0">Phone: +1 (417) 726-2765</p>
+      <p class="mb-0">Phone: (417) 726-2765 | WhatsApp: +57 (319) 206-4090</p>
       <p class="mt-2">
         <a href="https://www.linkedin.com/in/fabian-martinez-camargo-32357427b" target="_blank" class="footer-link fw-semibold">LinkedIn</a>
       </p>
@@ -462,21 +348,18 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script>
-    // Scroll reveal animations
+    // Scroll reveal
     document.addEventListener("DOMContentLoaded", function() {
-      const reveals = document.querySelectorAll(".reveal, section");
-      function revealElements() {
+      const sections = document.querySelectorAll("section");
+      function reveal() {
         const windowHeight = window.innerHeight;
-        for (let el of reveals) {
-          const elementTop = el.getBoundingClientRect().top;
-          if (elementTop < windowHeight - 100) {
-            el.classList.add("active");
-            el.classList.add("visible");
-          }
+        for (let section of sections) {
+          const top = section.getBoundingClientRect().top;
+          if(top < windowHeight - 100) { section.classList.add("visible"); }
         }
       }
-      window.addEventListener("scroll", revealElements);
-      revealElements(); // trigger on load
+      window.addEventListener("scroll", reveal);
+      reveal();
     });
   </script>
 </body>
