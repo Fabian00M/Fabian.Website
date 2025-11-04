@@ -4,44 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fabian Martinez | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
         crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <style>
     body {
+      font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
+      background-color: #f4f7f9;
     }
     .gradient-background {
       background: linear-gradient(90deg, #004aad, #5de0e6);
       color: white;
     }
-    .my-img {
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    .hero-img {
+      border-radius: 50%;
+      border: 5px solid #5de0e6;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 250px;
+      transition: transform 0.3s ease;
     }
-    .pro {
-      color: #0d6efd;
+    .hero-img:hover {
+      transform: scale(1.05);
     }
     section {
       padding-top: 4rem;
       padding-bottom: 4rem;
     }
-    .card:hover {
-      transform: translateY(-5px);
+    .card-hover:hover {
+      transform: translateY(-7px);
       transition: 0.3s;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .badge-skill {
+      margin: 2px 2px;
+      font-size: 0.85rem;
+    }
+    .certificate-card {
+      border-left: 5px solid #0d6efd;
     }
     footer {
-      background: #f8f9fa;
+      background: #004aad;
+      color: white;
     }
     .footer-link {
-      color: #0d6efd;
+      color: #5de0e6;
       text-decoration: none;
     }
     .footer-link:hover {
       text-decoration: underline;
+    }
+    .progress {
+      height: 10px;
+    }
+    .section-header {
+      position: relative;
+      display: inline-block;
+    }
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #0d6efd;
+      margin-top: 5px;
+      border-radius: 2px;
     }
   </style>
 </head>
@@ -53,11 +86,12 @@
     <div class="container py-5">
       <div class="row align-items-center g-5">
         <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="display-5 fw-bold lh-1 mb-3">I am Fabian Martinez</h1>
-          <h2>a <span class="pro">pro</span>grammer.</h2>
+          <h1 class="display-5 fw-bold lh-1 mb-3">Fabian Martinez</h1>
+          <h2 class="fw-light">Software Engineer & Web Developer</h2>
+          <p class="mt-3">Passionate about creating innovative solutions and enhancing user experiences through software and web development.</p>
         </div>
         <div class="col-lg-6 text-center">
-          <img src="images/FMartinez.jpg" alt="Fabian Martinez" class="my-img img-fluid" width="300" loading="lazy">
+          <img src="images/FMartinez.jpg" alt="Fabian Martinez" class="hero-img img-fluid" loading="lazy">
         </div>
       </div>
     </div>
@@ -66,7 +100,7 @@
   <!-- ===== ABOUT SECTION ===== -->
   <section id="about" class="text-center">
     <div class="container">
-      <h2 class="display-5 fw-bold mb-4">About Me</h2>
+      <h2 class="section-header display-6 fw-bold mb-4">About Me</h2>
       <div class="col-lg-8 mx-auto">
         <p class="lead">
           Greetings! I am Fabian Yadid Martinez Camargo, a programmer from Bogotá, Colombia. I graduated from Baker University, Kansas,
@@ -78,15 +112,13 @@
     </div>
   </section>
 
-  <!-- ===== EDUCATION / FEATURES ===== -->
-  <section id="education" class="bg-light">
+  <!-- ===== EDUCATION SECTION ===== -->
+  <section id="education">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="display-6 fw-bold">Education</h2>
-      </div>
+      <h2 class="section-header text-center mb-5">Education</h2>
       <div class="row g-4 row-cols-1 row-cols-lg-3">
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
               <h3 class="fs-4 fw-bold">Computer Science Major</h3>
               <ul class="list-unstyled mt-3">
@@ -101,7 +133,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <div class="card-body">
               <h3 class="fs-4 fw-bold">Mathematics Minor</h3>
               <ul class="list-unstyled mt-3">
@@ -113,10 +145,128 @@
           </div>
         </div>
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
-            <div class="card-body text-center">
-              <h3 class="fs-4 fw-bold">GPA: 3.36</h3>
-              <p class="text-muted mt-3">Consistent academic performance and practical achievements in software and system design.</p>
+          <div class="card shadow-sm h-100 border-0 card-hover text-center">
+            <h3 class="fs-4 fw-bold">GPA: 3.36</h3>
+            <p class="text-muted mt-3">Consistent academic performance and practical achievements in software and system design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE SECTION ===== -->
+  <section id="experience" class="bg-light">
+    <div class="container">
+      <h2 class="section-header text-center mb-5">Experience</h2>
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">IT & System Administrator</h5>
+              <p class="text-muted">Brunswick Hills Tennis Center, NJ (Sept 2024 – Present)</p>
+              <ul>
+                <li>Maintain and optimize the club’s website to improve UX and drive online sales.</li>
+                <li>Provide technical training to staff and members on IT systems and tools.</li>
+                <li>Conduct regular system updates, maintenance, and optimizations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Full Stack Web Developer</h5>
+              <p class="text-muted">Personal Project (June 2024)</p>
+              <ul>
+                <li>Designed and deployed a personal portfolio site using HTML, CSS, and GitHub Pages.</li>
+                <li>Applied principles from the Web Development Bootcamp, including responsive design and UX best practices.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Mobile App Developer</h5>
+              <p class="text-muted">Senior Project (Spring 2024)</p>
+              <ul>
+                <li>Built a Java-based Android app to connect tennis players with local hitting partners.</li>
+                <li>Developed a MySQL database and integrated it via PHP for real-time data operations.</li>
+                <li>Used Git and TortoiseGit for version control; documented features using use cases and test cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Backend/API Developer</h5>
+              <p class="text-muted">Iridian (Remote, Summer 2023)</p>
+              <ul>
+                <li>Developed and integrated REST APIs using Spring Boot and Symfony.</li>
+                <li>Collaborated with remote teams to connect external platforms.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Software Engineer</h5>
+              <p class="text-muted">Institute of Biological Research (Fall 2022)</p>
+              <ul>
+                <li>Helped create a Flutter app and companion website to collect and process Tardigrade data.</li>
+                <li>Documented system features with test cases and use cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATES SECTION ===== -->
+  <section id="certificates">
+    <div class="container">
+      <h2 class="section-header text-center mb-5">Certificates</h2>
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Ethical Hacking from Scratch</h5>
+              <p class="text-muted">Udemy</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Beginning C++ Programming – From Beginner to Beyond</h5>
+              <p class="text-muted">Udemy</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Python for Data Science and Machine Learning Bootcamp</h5>
+              <p class="text-muted">Udemy</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">The Complete Python Bootcamp</h5>
+              <p class="text-muted">Udemy</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0 card-hover certificate-card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">The Complete 2024 Web Development Bootcamp</h5>
+              <p class="text-muted">Udemy</p>
             </div>
           </div>
         </div>
@@ -125,118 +275,100 @@
   </section>
 
   <!-- ===== PROJECTS SECTION ===== -->
-  <section id="projects" class="py-5">
-    <div class="container col-xxl-8">
-      <header class="text-center mb-5">
-        <h2 class="display-5 fw-bold">Projects</h2>
-        <p class="text-muted">A showcase of my software and web development work</p>
-      </header>
-
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-header text-center mb-5">Projects</h2>
       <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <!-- Example project card: repeat or update links as needed -->
+
+        <!-- Project Cards -->
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/TiTenis/login1.jpeg" class="card-img-top" alt="Android Mobile App">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Android Mobile App</h5>
-              <p class="card-text flex-grow-1">
-                Built with Java, PHP, and MySQL using Android Studio and Workbench. Features user login and database integration.
-              </p>
+              <p class="card-text flex-grow-1">Built with Java, PHP, and MySQL using Android Studio and Workbench. Features user login and database integration.</p>
               <a href="./App.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/WebPage.jpeg" class="card-img-top" alt="Web Design">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">WebPage Design</h5>
-              <p class="card-text flex-grow-1">
-                Developed using HTML, CSS, and Bootstrap. Responsive and optimized for different devices.
-              </p>
+              <p class="card-text flex-grow-1">Developed using HTML, CSS, and Bootstrap. Responsive and optimized for different devices.</p>
               <a href="./Webpage.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/Dispatcher.jpeg" class="card-img-top" alt="Dispatcher Project">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Process Dispatcher</h5>
-              <p class="card-text flex-grow-1">
-                Created a Unix-based process dispatcher to manage multiple tasks in a multitasking environment.
-              </p>
+              <p class="card-text flex-grow-1">Created a Unix-based process dispatcher to manage multiple tasks in a multitasking environment.</p>
               <a href="./Dispatcher.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/Tron.jpeg" class="card-img-top" alt="Tron Game">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">LightCycles Game</h5>
-              <p class="card-text flex-grow-1">
-                A Tron-inspired game developed in C++ with a custom-built game engine.
-              </p>
+              <p class="card-text flex-grow-1">A Tron-inspired game developed in C++ with a custom-built game engine.</p>
               <a href="./Tron.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/Robert.jpeg" class="card-img-top" alt="Robert Game">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Robert 2D Game</h5>
-              <p class="card-text flex-grow-1">
-                Designed a 2D version of Qbert in C++, featuring custom physics and level design.
-              </p>
+              <p class="card-text flex-grow-1">Designed a 2D version of Qbert in C++, featuring custom physics and level design.</p>
               <a href="./Robert.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/Brick.jpeg" class="card-img-top" alt="Brick Game">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Brick Breaker Game</h5>
-              <p class="card-text flex-grow-1">
-                A fun classic-style game created in C++, including custom collision logic.
-              </p>
+              <p class="card-text flex-grow-1">A fun classic-style game created in C++, including custom collision logic.</p>
               <a href="./Brick.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/match.jpeg" class="card-img-top" alt="Brainiac Game">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Brainiac Memory Game</h5>
-              <p class="card-text flex-grow-1">
-                Designed a C++ memory matching game using object-oriented design principles.
-              </p>
+              <p class="card-text flex-grow-1">Designed a C++ memory matching game using object-oriented design principles.</p>
               <a href="./Brainiac.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card shadow-sm h-100 border-0">
+          <div class="card shadow-sm h-100 border-0 card-hover">
             <img src="images/disk.jpeg" class="card-img-top" alt="Nim Game">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Nim Disk Game</h5>
-              <p class="card-text flex-grow-1">
-                Created a C++ disk-removal strategy game with multiplayer support.
-              </p>
+              <p class="card-text flex-grow-1">Created a C++ disk-removal strategy game with multiplayer support.</p>
               <a href="./Disk.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -244,15 +376,11 @@
   <!-- ===== SKILLS SECTION ===== -->
   <section id="skills" class="bg-light">
     <div class="container">
-      <header class="text-center mb-5">
-        <h2 class="display-5 fw-bold">Skills</h2>
-      </header>
+      <h2 class="section-header text-center mb-5">Skills</h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="col">
           <h5>Programming Languages</h5>
-          <ul>
-            <li>Java</li><li>C++</li><li>Python</li><li>PHP</li><li>Lua</li><li>R</li>
-          </ul>
+          <ul><li>Java</li><li>C++</li><li>Python</li><li>PHP</li><li>Lua</li><li>R</li></ul>
         </div>
         <div class="col">
           <h5>Software Development</h5>
@@ -289,19 +417,19 @@
   <!-- ===== CONTACT SECTION ===== -->
   <section id="contact" class="text-center py-5">
     <div class="container">
-      <h2 class="display-5 fw-bold mb-3">Contact Me</h2>
+      <h2 class="section-header mb-3">Contact Me</h2>
       <p class="lead mb-4">Ready to join your team and contribute to your next project!</p>
       <a href="mailto:fabianyadid@yahoo.es" class="btn btn-primary btn-lg">E-Mail</a>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="gradient-background py-4 text-center text-white">
+  <footer class="py-4 text-center">
     <div class="container">
-      <p class="mb-1">© 2024 Fabian Martinez</p>
+      <p class="mb-1">© 2025 Fabian Martinez</p>
       <p class="mb-0">Phone: (417) 726-2765 | WhatsApp: +57 (319) 206-4090</p>
       <p class="mt-2">
-        <a href="https://www.linkedin.com/in/fabian-martinez-camargo-32357427b" target="_blank" class="footer-link text-white fw-semibold">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/fabian-martinez-camargo-32357427b" target="_blank" class="footer-link fw-semibold">LinkedIn</a>
       </p>
     </div>
   </footer>
