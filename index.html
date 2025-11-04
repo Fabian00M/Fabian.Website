@@ -1,113 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fabian Martinez | Portfolio</title>
-
-  <!-- Bootstrap -->
-  <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-    crossorigin="anonymous" 
-  />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+    .gradient-background {
+      background: linear-gradient(90deg, #004aad, #5de0e6);
+      color: white;
+    }
+    .my-img {
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .pro {
+      color: #0d6efd;
+    }
+    section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    footer {
+      background: #f8f9fa;
+    }
+    .footer-link {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- ===== HERO SECTION ===== -->
-  <section id="hero" class="gradient-background text-center text-lg-start">
-    <div class="container col-xxl-8 px-4 py-5">
-      <div class="row align-items-center g-5 py-5 flex-lg-row-reverse">
-        <div class="col-10 col-sm-8 col-lg-6">
-          <img 
-            src="images/FMartinez.jpg" 
-            class="my-img img-fluid rounded-circle shadow" 
-            alt="Portrait of Fabian Martinez" 
-            loading="lazy" 
-          />
+  <section id="title" class="gradient-background text-center text-lg-start">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="display-5 fw-bold lh-1 mb-3">I am Fabian Martinez</h1>
+          <h2>a <span class="pro">pro</span>grammer.</h2>
         </div>
-        <div class="col-lg-6">
-          <h1 class="display-5 fw-bold mb-3">I’m Fabian Martinez</h1>
-          <h2 class="text-light fw-normal">
-            A passionate <span class="text-primary fw-semibold">Programmer</span>
-          </h2>
-          <a href="#contact" class="btn mt-3">Contact Me</a>
+        <div class="col-lg-6 text-center">
+          <img src="images/FMartinez.jpg" alt="Fabian Martinez" class="my-img img-fluid" width="300" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="text-center py-5">
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="text-center">
     <div class="container">
-      <h2 class="display-5 fw-bold text-body-emphasis mb-4">About Me</h2>
+      <h2 class="display-5 fw-bold mb-4">About Me</h2>
       <div class="col-lg-8 mx-auto">
-        <p class="lead mb-3">
-          Greetings! I am <strong>Fabian Yadid Martinez Camargo</strong>, a programmer from Bogotá, Colombia.
-          I hold a degree from Baker University in Kansas and have a deep passion for coding, technology,
-          and continuous learning.
+        <p class="lead">
+          Greetings! I am Fabian Yadid Martinez Camargo, a programmer from Bogotá, Colombia. I graduated from Baker University, Kansas,
+          with a passion for coding, technology, and learning new skills.
         </p>
-        <p>
-          I am enthusiastic about contributing my skills and knowledge to innovative and collaborative teams.
-        </p>
-        <a href="./About.html" class="btn btn-outline-primary mt-3">Learn More</a>
+        <p>I am enthusiastic about contributing my skills and knowledge to your team.</p>
+        <a href="./About.html" class="btn btn-outline-primary btn-lg mt-3">More...</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== EDUCATION & FEATURES ===== -->
-  <section id="education" class="bg-light py-5">
-    <div class="container col-xxl-8">
-      <div class="row g-4 row-cols-1 row-cols-lg-3 text-start">
+  <!-- ===== EDUCATION / FEATURES ===== -->
+  <section id="education" class="bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-6 fw-bold">Education</h2>
+      </div>
+      <div class="row g-4 row-cols-1 row-cols-lg-3">
         <div class="col">
-          <div class="d-flex align-items-start">
-            <div class="icon-square me-3 bg-primary-subtle">
-              <i class="bi bi-check2-circle fs-4 text-primary"></i>
-            </div>
-            <div>
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
               <h3 class="fs-4 fw-bold">Computer Science Major</h3>
-              <ul class="mb-0">
-                <li>CS392 Software Engineering</li>
-                <li>CSI465 Compiler Design</li>
-                <li>CSI300 Computer Architecture</li>
-                <li>CS335 Computer Networks</li>
-                <li>CS371 Database Design</li>
-                <li>CS491 Capstone Project</li>
+              <ul class="list-unstyled mt-3">
+                <li>Software Engineering</li>
+                <li>Compiler Design</li>
+                <li>Computer Architecture</li>
+                <li>Networks</li>
+                <li>Database Design</li>
+                <li>Capstone Project</li>
               </ul>
             </div>
           </div>
         </div>
-
         <div class="col">
-          <div class="d-flex align-items-start">
-            <div class="icon-square me-3 bg-primary-subtle">
-              <i class="bi bi-check2-circle fs-4 text-primary"></i>
-            </div>
-            <div>
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
               <h3 class="fs-4 fw-bold">Mathematics Minor</h3>
-              <ul class="mb-0">
-                <li>MA291 Intro to Higher Math</li>
-                <li>MA355 Statistics & Modeling</li>
-                <li>MTH211 Calculus II</li>
+              <ul class="list-unstyled mt-3">
+                <li>Intro to Higher Math</li>
+                <li>Statistics & Modeling</li>
+                <li>Calculus II</li>
               </ul>
             </div>
           </div>
         </div>
-
         <div class="col">
-          <div class="d-flex align-items-start">
-            <div class="icon-square me-3 bg-primary-subtle">
-              <i class="bi bi-check2-circle fs-4 text-primary"></i>
-            </div>
-            <div>
-              <h3 class="fs-4 fw-bold">GPA</h3>
-              <p class="mb-0">3.36</p>
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center">
+              <h3 class="fs-4 fw-bold">GPA: 3.36</h3>
+              <p class="text-muted mt-3">Consistent academic performance and practical achievements in software and system design.</p>
             </div>
           </div>
         </div>
@@ -115,121 +124,187 @@
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
+  <!-- ===== PROJECTS SECTION ===== -->
   <section id="projects" class="py-5">
     <div class="container col-xxl-8">
       <header class="text-center mb-5">
         <h2 class="display-5 fw-bold">Projects</h2>
+        <p class="text-muted">A showcase of my software and web development work</p>
       </header>
 
-      <div class="row g-4">
-        <!-- Example Project -->
-        <div class="col-md-6">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="images/TiTenis/login1.jpeg" class="card-img-top" alt="Android App Login Screen">
-            <div class="card-body">
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <!-- Example project card: repeat or update links as needed -->
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/TiTenis/login1.jpeg" class="card-img-top" alt="Android Mobile App">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">Android Mobile App</h5>
-              <p class="card-text">
-                Developed an Android application using Java, PHP, and MySQL with Android Studio and MySQL Workbench.
+              <p class="card-text flex-grow-1">
+                Built with Java, PHP, and MySQL using Android Studio and Workbench. Features user login and database integration.
               </p>
-              <a href="./App.html" class="btn btn-outline-primary">View Details</a>
+              <a href="./App.html" class="btn btn-outline-primary mt-auto">View Details</a>
             </div>
           </div>
         </div>
 
-        <!-- Repeat this pattern for other projects -->
-        <!-- Tip: you can use a loop or partial template in React or Jinja later -->
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/WebPage.jpeg" class="card-img-top" alt="Web Design">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">WebPage Design</h5>
+              <p class="card-text flex-grow-1">
+                Developed using HTML, CSS, and Bootstrap. Responsive and optimized for different devices.
+              </p>
+              <a href="./Webpage.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/Dispatcher.jpeg" class="card-img-top" alt="Dispatcher Project">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Process Dispatcher</h5>
+              <p class="card-text flex-grow-1">
+                Created a Unix-based process dispatcher to manage multiple tasks in a multitasking environment.
+              </p>
+              <a href="./Dispatcher.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/Tron.jpeg" class="card-img-top" alt="Tron Game">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">LightCycles Game</h5>
+              <p class="card-text flex-grow-1">
+                A Tron-inspired game developed in C++ with a custom-built game engine.
+              </p>
+              <a href="./Tron.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/Robert.jpeg" class="card-img-top" alt="Robert Game">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Robert 2D Game</h5>
+              <p class="card-text flex-grow-1">
+                Designed a 2D version of Qbert in C++, featuring custom physics and level design.
+              </p>
+              <a href="./Robert.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/Brick.jpeg" class="card-img-top" alt="Brick Game">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Brick Breaker Game</h5>
+              <p class="card-text flex-grow-1">
+                A fun classic-style game created in C++, including custom collision logic.
+              </p>
+              <a href="./Brick.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/match.jpeg" class="card-img-top" alt="Brainiac Game">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Brainiac Memory Game</h5>
+              <p class="card-text flex-grow-1">
+                Designed a C++ memory matching game using object-oriented design principles.
+              </p>
+              <a href="./Brainiac.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100 border-0">
+            <img src="images/disk.jpeg" class="card-img-top" alt="Nim Game">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Nim Disk Game</h5>
+              <p class="card-text flex-grow-1">
+                Created a C++ disk-removal strategy game with multiplayer support.
+              </p>
+              <a href="./Disk.html" class="btn btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SKILLS ===== -->
-  <section id="skills" class="bg-light py-5">
+  <!-- ===== SKILLS SECTION ===== -->
+  <section id="skills" class="bg-light">
     <div class="container">
       <header class="text-center mb-5">
         <h2 class="display-5 fw-bold">Skills</h2>
       </header>
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="col">
-          <h3 class="fw-bold fs-5 mb-2">Programming Languages</h3>
+          <h5>Programming Languages</h5>
           <ul>
-            <li>Java</li>
-            <li>C++</li>
-            <li>Python</li>
-            <li>PHP</li>
-            <li>Lua</li>
-            <li>R</li>
+            <li>Java</li><li>C++</li><li>Python</li><li>PHP</li><li>Lua</li><li>R</li>
           </ul>
         </div>
-
         <div class="col">
-          <h3 class="fw-bold fs-5 mb-2">Web Development</h3>
-          <ul>
-            <li>HTML, CSS, Bootstrap</li>
-            <li>UI/UX Design</li>
-          </ul>
+          <h5>Software Development</h5>
+          <ul><li>Design</li><li>Testing</li><li>Documentation</li></ul>
         </div>
-
         <div class="col">
-          <h3 class="fw-bold fs-5 mb-2">Software Development</h3>
-          <ul>
-            <li>Design</li>
-            <li>Testing</li>
-            <li>Documentation</li>
-          </ul>
+          <h5>Web Development</h5>
+          <ul><li>HTML</li><li>CSS</li><li>Bootstrap</li><li>UI/UX</li></ul>
         </div>
-
         <div class="col">
-          <h3 class="fw-bold fs-5 mb-2">Operating Systems</h3>
-          <ul>
-            <li>Windows</li>
-            <li>Linux</li>
-          </ul>
+          <h5>Operating Systems</h5>
+          <ul><li>Windows</li><li>Linux</li></ul>
+        </div>
+        <div class="col">
+          <h5>Mobile Development</h5>
+          <ul><li>Java</li><li>Android Studio</li><li>PHP</li><li>MySQL</li></ul>
+        </div>
+        <div class="col">
+          <h5>Project Management</h5>
+          <ul><li>Planning</li><li>Execution</li><li>Delivery</li></ul>
+        </div>
+        <div class="col">
+          <h5>Personal</h5>
+          <ul><li>Problem Solving</li><li>Teamwork</li><li>Communication</li><li>Adaptability</li><li>Resilience</li></ul>
+        </div>
+        <div class="col">
+          <h5>Languages</h5>
+          <ul><li>Spanish</li><li>English</li></ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- ===== CONTACT SECTION ===== -->
   <section id="contact" class="text-center py-5">
     <div class="container">
       <h2 class="display-5 fw-bold mb-3">Contact Me</h2>
-      <p class="lead mb-4">Ready to join your team or collaborate on exciting projects!</p>
-      <a href="mailto:fabianyadid@yahoo.es" class="btn">Email Me</a>
+      <p class="lead mb-4">Ready to join your team and contribute to your next project!</p>
+      <a href="mailto:fabianyadid@yahoo.es" class="btn btn-primary btn-lg">E-Mail</a>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="gradient-background text-white py-5">
+  <footer class="gradient-background py-4 text-center text-white">
     <div class="container">
-      <div class="row text-center text-md-start">
-        <div class="col-md">
-          <p class="mb-1">© 2025 Fabian Martinez</p>
-        </div>
-        <div class="col-md">
-          <p class="mb-0">Mobile: (417) 726-2765</p>
-          <p>WhatsApp: +57 (319) 206-4090</p>
-        </div>
-        <div class="col-md">
-          <a 
-            href="https://www.linkedin.com/in/fabian-martinez-camargo-32357427b" 
-            class="text-white text-decoration-none"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn Profile
-          </a>
-        </div>
-      </div>
+      <p class="mb-1">© 2024 Fabian Martinez</p>
+      <p class="mb-0">Phone: (417) 726-2765 | WhatsApp: +57 (319) 206-4090</p>
+      <p class="mt-2">
+        <a href="https://www.linkedin.com/in/fabian-martinez-camargo-32357427b" target="_blank" class="footer-link text-white fw-semibold">LinkedIn</a>
+      </p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS (optional but recommended) -->
-  <script 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-    crossorigin="anonymous">
-  </script>
 </body>
 </html>
